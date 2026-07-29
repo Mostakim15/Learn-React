@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-     <h1>Count react</h1>
+     <h1 className='bg-amber-300'>Count react</h1>
      <h2>actual value {value}</h2>
      <br />
      <h2>count value {count}</h2>
