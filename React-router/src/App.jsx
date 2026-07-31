@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-sky-500 h-[100px] w-[100px] flex flex-col items-center justify-center">
+      <div className="bg-sky-500 h-25 w-25 flex flex-col items-center justify-center">
 
       </div>
 
