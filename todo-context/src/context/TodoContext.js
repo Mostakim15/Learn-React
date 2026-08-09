@@ -1,5 +1,6 @@
 // this file for context api to implement the context and provider for the todo application
-import {createContext, useState} from 'react'
+import {createContext, useState, useContext} from 'react'
+
 
 export const TodoContext = createContext({ // this is for creating the context for the todo application
     todos: [

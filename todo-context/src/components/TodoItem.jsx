@@ -1,7 +1,22 @@
 import React from 'react'
+import {useState} from 'react'
+import { useTodo } from '../context/TodoContext'
 
 function TodoItem({ todo }) {
-    
+    const { toggleTodo, removeTodo, updateTodo } = useTodo() // this is for using the context in the component
+
+    const [isTodoEditable, setIsTodoEditable] = React.useState(false)
+    const [todoMsg, setTodoMsg] = useState(todo.todo) 
+
+    const editTodo = () => {
+        updateTodo(todo.id, {...todo, todo: todoMsg })
+        setIsTodoEditable(false)
+    }
+
+    const toggleCompleted = () => {
+        toggleTodo(todo.id)
+    }
+
 
     return (
         <div
@@ -41,7 +56,7 @@ function TodoItem({ todo }) {
             {/* Delete Todo Button */}
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() => removeTodo(todo.id)}
             >
                 ❌
             </button>
@@ -50,6 +65,3 @@ function TodoItem({ todo }) {
 }
 
 export default TodoItem;
-
-
-export default TodoItem
