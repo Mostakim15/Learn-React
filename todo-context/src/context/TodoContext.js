@@ -2,7 +2,13 @@
 import {createContext, useState} from 'react'
 
 export const TodoContext = createContext({ // this is for creating the context for the todo application
-    todos: [],
+    todos: [
+        {
+            id: 1,
+            todo: "Learn React",
+            completed: false,
+        }
+    ],
     addTodo: (todo) => {},
     removeTodo: (id) => {},
     toggleTodo: (id) => {},

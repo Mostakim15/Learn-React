@@ -38,6 +38,19 @@ function App() {
     )
   }
 
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'))
+      
+      if (todos && todos.length > 0) {
+        setTodos(todos)
+      }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+
   return (
     <TodoProvider value={{todos,addTodo,removeTodo,toggleTodo,updateTodo}}>
     <div className="bg-[#172842] min-h-screen py-8">
