@@ -1,16 +1,74 @@
-# React + Vite
+# React Router Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React and Vite application for practicing client-side routing with React Router. It uses a shared layout with a navigation header and footer, nested routes, a dynamic user route, and a data loader for GitHub profile information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Client-side navigation with React Router
+- Shared `Header` and `Footer` through a layout route
+- Active navigation links with `NavLink`
+- Dynamic user route at `/user/:id`
+- GitHub profile data loaded with a route `loader` and `useLoaderData`
+- Responsive styling with Tailwind CSS
 
-## React Compiler
+## Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Path        | Page    | Description                        |
+| ----------- | ------- | ---------------------------------- |
+| `/`         | Home    | Landing page content               |
+| `/about`    | About   | About page                         |
+| `/contact`  | Contact | Contact page                       |
+| `/user/:id` | User    | Dynamic user page                  |
+| `/Github`   | Github  | GitHub profile loaded from the API |
 
-## Expanding the Oxlint configuration
+The GitHub route requests data from `https://api.github.com/users/mostakim15`, so it requires an internet connection when the page is opened.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Tech Stack
+
+- React 19
+- Vite
+- React Router DOM 7
+- Tailwind CSS 4
+- Oxlint
+
+## Getting Started
+
+From this project directory, install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Available Scripts
+
+| Command           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Start the Vite development server with hot reload |
+| `npm run build`   | Create a production build                         |
+| `npm run preview` | Preview the production build locally              |
+| `npm run lint`    | Run Oxlint                                        |
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── About/About.jsx       # About route
+│   ├── Contact/Contact.jsx   # Contact route
+│   ├── Footer/Footer.jsx     # Shared footer
+│   ├── Github/Github.jsx     # GitHub route and loader
+│   ├── Header/Header.jsx     # Shared navigation
+│   ├── Home/Home.jsx         # Home route
+│   └── User/User.jsx         # Dynamic user route
+├── Layout.jsx                # Shared layout with Outlet
+├── App.jsx                   # Root component
+└── main.jsx                  # Router configuration and entry point
+```

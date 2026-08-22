@@ -1,16 +1,75 @@
-# React + Vite
+# Redux Toolkit Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small Todo application built with React and Vite to demonstrate state management with Redux Toolkit and React Redux.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add Todos from the input form
+- Remove Todos
+- Generate unique Todo IDs with Redux Toolkit's `nanoid`
+- Keep Todo state in a centralized Redux store
+- Define Todo actions with a Redux Toolkit slice
 
-## React Compiler
+The slice also includes update and toggle actions for future UI controls.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+- React 19
+- Vite
+- Redux Toolkit
+- React Redux
+- Tailwind CSS 4
+- Oxlint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Getting Started
+
+From this project directory, install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Available Scripts
+
+| Command           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Start the Vite development server with hot reload |
+| `npm run build`   | Create a production build                         |
+| `npm run preview` | Preview the production build locally              |
+| `npm run lint`    | Run Oxlint                                        |
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   └── store.js             # Configures the Redux store
+├── components/
+│   ├── AddTodo.jsx          # Adds Todos by dispatching an action
+│   └── Todos.jsx            # Reads and displays Todos from Redux
+├── features/
+│   └── todo/
+│       └── todoSlice.js     # Todo state, reducers, and actions
+├── App.jsx                 # Main application layout
+└── main.jsx                # Redux Provider and application entry point
+```
+
+## Redux State
+
+The Todo state is available at `state.todo.todos`. Each Todo has this shape:
+
+```js
+{
+	id: string,
+	text: string,
+	completed: boolean
+}
+```

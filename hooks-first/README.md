@@ -1,16 +1,62 @@
-# React + Vite
+# Hooks First
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React and Vite practice project focused on learning and using React Hooks through an interactive password generator and background color picker.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Generate a random password between 6 and 20 characters
+- Include numbers and symbols in generated passwords
+- Copy the generated password to the clipboard
+- Show a confirmation message after copying
+- Change the page background with preset color buttons
 
-## React Compiler
+## Hooks Demonstrated
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `useState` manages the password options, generated password, copy status, and background color
+- `useCallback` memoizes password generation and clipboard handlers
+- `useEffect` regenerates the password when its options change
+- `useRef` selects the generated password input after copying
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite
+- Tailwind CSS 4
+- ESLint with React Hooks and React Refresh plugins
+
+## Getting Started
+
+From this project directory, install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Available Scripts
+
+| Command           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Start the Vite development server with hot reload |
+| `npm run build`   | Create a production build                         |
+| `npm run preview` | Preview the production build locally              |
+| `npm run lint`    | Run ESLint                                        |
+
+## Project Structure
+
+```text
+src/
+├── App.jsx       # Password generator and color picker logic
+├── App.css       # Component styles
+├── index.css     # Global styles and Tailwind import
+└── main.jsx      # React application entry point
+```
+
+All application behavior is currently contained in `src/App.jsx` so the hook usage is easy to follow.

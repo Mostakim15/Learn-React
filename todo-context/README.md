@@ -1,16 +1,60 @@
-# React + Vite
+# Todo Context
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple Todo application built with React and Vite. It demonstrates how to share Todo state and actions across components with the React Context API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new Todos
+- Mark Todos as complete or incomplete
+- Edit incomplete Todos
+- Delete Todos
+- Persist Todos in the browser with `localStorage`
+- Responsive styling with Tailwind CSS
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- React Context API
+- Tailwind CSS 4
+- Oxlint
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+From this project directory, install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Available Scripts
+
+| Command           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Start the Vite development server with hot reload |
+| `npm run build`   | Create a production build                         |
+| `npm run preview` | Preview the production build locally              |
+| `npm run lint`    | Run Oxlint                                        |
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── TodoForm.jsx       # Form for adding Todos
+│   └── TodoItem.jsx       # Todo display, edit, toggle, and delete actions
+├── context/
+│   └── TodoContext.js     # Todo Context and useTodo hook
+├── App.jsx                # Application state, persistence, and layout
+└── main.jsx               # React application entry point
+```
+
+Todos are stored under the `todos` key in the browser's `localStorage`. Clearing that key resets the list in the current browser.
