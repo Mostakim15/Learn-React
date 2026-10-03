@@ -36,7 +36,7 @@ export class Service{
     async updatePost(slug, {title, content, blogImage, status}){
         try {
             return await this.databases.updateDocument(
-                 confi.appwriteDatabaseId,
+                confi.appwriteDatabaseId,
                 confi.appwriteCollectionId,
                 slug,
                 {
@@ -55,7 +55,7 @@ export class Service{
     async deletePost(slug){
         try {
             await this.databases.deleteDocument(
-                 confi.appwriteDatabaseId,
+                confi.appwriteDatabaseId,
                 confi.appwriteCollectionId,
                 slug
             
@@ -114,7 +114,7 @@ export class Service{
     async deleteFile(fileId){
         try {
             await this.bucket.deleteFile(
-                 confi.appwriteBucketId,
+                confi.appwriteBucketId,
                 fileId
             )
             return true
