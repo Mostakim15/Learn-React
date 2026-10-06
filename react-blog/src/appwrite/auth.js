@@ -1,55 +1,57 @@
 import confi from '../confi/confi.js';
-import { Client, Account, ID } from 'appwrite';
+import { Client, Account, ID } from "appwrite";
+
 
 export class AuthService {
-    clint = new Client();
+    client = new Client();
     account;
 
-    constructor(){
-        this.clint
+    constructor() {
+        this.client
             .setEndpoint(confi.appwriteUrl)
             .setProject(confi.appwriteProjectId);
-        this.account = new Account(this.clint)
+        this.account = new Account(this.client);
+            
     }
 
-    async createAccount({email, password, name}){
-
-        try{
+    async createAccount({email, password, name}) {
+        try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
-            if (userAccount){
+            if (userAccount) {
+                // call another method
                 return this.login({email, password});
-            }else{
-                return userAccount;
+            } else {
+               return  userAccount;
             }
-        }catch(error){
-            throw error;
-        } 
-    }
-
-    async login({email, password}){
-        try{
-            return await this.account.createAnonymousSession(email,password);
-    
-        } catch(error){
+        } catch (error) {
             throw error;
         }
     }
 
-    async getCurrentUser(){
-        try{
+    async login({email, password}) {
+        try {
+            return await this.account.createEmailPasswordSession(email, password);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getCurrentUser() {
+        try {
             return await this.account.get();
-
-        }catch(error){
-            console.log("getCurrentUser", error);
+        } catch (error) {
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
+
         return null;
     }
 
-    async logout(){
-        try{
+    async logout() {
+
+        try {
             await this.account.deleteSessions();
-        }catch(error){
-            console.log("Logout", error);
+        } catch (error) {
+            console.log("Appwrite serive :: logout :: error", error);
         }
     }
 }

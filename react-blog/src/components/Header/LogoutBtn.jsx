@@ -25,5 +25,4 @@ function LogoutBtn() {
     </button>
   )
 }
-
 export default LogoutBtn
