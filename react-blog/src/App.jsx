@@ -14,25 +14,29 @@ function App() {
     authService.getCurrentUser()
     .then((userData) => {
       if (userData) {
-        dispatch(login({userData}))
+        dispatch(login(userData))
       } else {
         dispatch(logout())
       }
     })
     .finally(() => setLoading(false))
-  }, [])
+  }, [dispatch])
   
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
+    <div className='min-h-screen flex flex-col bg-[#f8f6f1]'>
+      <div className='w-full flex-1'>
         <Header />
-        <main>
-        TODO:  <Outlet />
-        </main>
-        <Footer />
+        <div>
+          <Outlet />
+        </div>
       </div>
+      <Footer />
     </div>
-  ) : null
+  ) : (
+    <div className="flex min-h-screen items-center justify-center bg-[#f8f6f1] text-[#686b70]">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#e9e2d7] border-t-[#b77945]" aria-label="Loading" />
+    </div>
+  )
 }
 
 export default App

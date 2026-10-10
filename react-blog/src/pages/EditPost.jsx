@@ -20,8 +20,12 @@ function EditPost() {
         }
     }, [slug, navigate])
   return post ? (
-    <div className='py-8'>
+    <div className='py-14 sm:py-20'>
         <Container>
+            <div className="mb-10 border-b border-[#e9e2d7] pb-8">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b77945]">Edit story</p>
+                <h1 className="editorial-serif mt-3 text-5xl font-bold text-[#172b3a]">Refine your perspective.</h1>
+            </div>
             <PostForm post={post} />
         </Container>
     </div>

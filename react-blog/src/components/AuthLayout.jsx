@@ -27,5 +27,7 @@ export default function Protected({children, authentication = true}) {
         setLoader(false)
     }, [authStatus, navigate, authentication])
 
-  return loader ? <h1>Loading...</h1> : <>{children}</>
+  return loader ? (
+    <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#686b70]">Checking your session…</div>
+  ) : <>{children}</>
 }
