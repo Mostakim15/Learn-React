@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
-import { Footer, Header } from './components'
+import { Footer, Header, Chatbot } from './components'
 import { Outlet } from 'react-router-dom'
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
         </div>
       </div>
       <Footer />
+      <Chatbot />
     </div>
   ) : (
     <div className="flex min-h-screen items-center justify-center bg-[#f8f6f1] text-[#686b70]">
