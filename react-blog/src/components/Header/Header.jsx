@@ -5,6 +5,7 @@ import { Container, Logo, LogoutBtn } from "../index.js";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
+  const userData = useSelector((state) => state.auth.userData);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Header() {
     ? [
         { name: "All stories", slug: "/all-posts" },
         { name: "Write", slug: "/add-post" },
+        { name: "Profile", slug: "/profile" },
       ]
     : [];
 
@@ -69,7 +71,23 @@ function Header() {
                   <button type="button" onClick={() => goTo("/signup")} className="rounded-full bg-[#172b3a] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#27485d]">Join free</button>
                 </>
               ) : (
-                <LogoutBtn />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => goTo("/profile")}
+                    className={`flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
+                      location.pathname === "/profile"
+                        ? "border-[#172b3a] bg-[#172b3a] text-white"
+                        : "border-[#e9e2d7] bg-white text-[#172b3a] hover:border-[#b77945]"
+                    }`}
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#b77945] text-[10px] font-bold text-white">
+                      {userData?.name ? userData.name[0].toUpperCase() : "U"}
+                    </span>
+                    <span className="max-w-[110px] truncate">{userData?.name || "Profile"}</span>
+                  </button>
+                  <LogoutBtn />
+                </div>
               )}
             </div>
           </div>

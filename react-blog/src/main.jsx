@@ -17,6 +17,7 @@ import Post from "./pages/Post";
 
 import AllPosts from "./pages/AllPosts";
 import Help from "./pages/Help";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,14 @@ const router = createBrowserRouter([
         {
             path: "/help",
             element: <Help />,
+        },
+        {
+            path: "/profile",
+            element: (
+                <AuthLayout authentication>
+                    <Profile />
+                </AuthLayout>
+            ),
         },
     ],
 },

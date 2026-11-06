@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "../Logo";
 
 function Footer() {
+  const authStatus = useSelector((state) => state.auth.status);
+
   return (
     <footer className="mt-20 border-t border-[#e9e2d7] bg-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10">
@@ -18,6 +21,7 @@ function Footer() {
         <div className="flex gap-6 text-sm font-semibold text-[#686b70]">
           <Link to="/" className="transition hover:text-[#b77945]">Home</Link>
           <Link to="/all-posts" className="transition hover:text-[#b77945]">Stories</Link>
+          {authStatus && <Link to="/profile" className="transition hover:text-[#b77945]">Profile</Link>}
           <Link to="/help" className="transition hover:text-[#b77945]">Help</Link>
         </div>
         <p className="text-sm text-[#9a9b9d]">© 2026 The Letterform</p>
