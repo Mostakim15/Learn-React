@@ -76,7 +76,7 @@ export default function Chatbot() {
           showWelcomeScreen: true,
           defaultLanguage: "en",
           initialMessages: [
-            "Hello! Welcome to The Letterform. 👋",
+            "Hello! Welcome to The Mostakimblog. 👋",
             "How can I help you explore or write stories today?",
           ],
           i18n: {
