@@ -206,6 +206,73 @@ export class Service{
             return false;
         }
     }
+
+    // --- EDUCATIONAL REELS SERVICE ---
+
+    async createReel({ title, description = "", videoFileId, topic, userId, authorName }) {
+        try {
+            return await this.databases.createDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteReelsCollectionId,
+                ID.unique(),
+                {
+                    title,
+                    description,
+                    videoFileId,
+                    topic,
+                    userId,
+                    authorName,
+                    likes: [],
+                }
+            );
+        } catch (error) {
+            console.log("Appwrite service :: createReel :: error", error);
+            throw error;
+        }
+    }
+
+    async getReels(queries = [Query.orderDesc("$createdAt")]) {
+        try {
+            return await this.databases.listDocuments(
+                confi.appwriteDatabaseId,
+                confi.appwriteReelsCollectionId,
+                queries
+            );
+        } catch (error) {
+            console.log("Appwrite service :: getReels :: error", error);
+            return { documents: [] };
+        }
+    }
+
+    async updateReelLikes(reelId, likes) {
+        try {
+            return await this.databases.updateDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteReelsCollectionId,
+                reelId,
+                {
+                    likes,
+                }
+            );
+        } catch (error) {
+            console.log("Appwrite service :: updateReelLikes :: error", error);
+            return false;
+        }
+    }
+
+    async deleteReel(reelId) {
+        try {
+            await this.databases.deleteDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteReelsCollectionId,
+                reelId
+            );
+            return true;
+        } catch (error) {
+            console.log("Appwrite service :: deleteReel :: error", error);
+            return false;
+        }
+    }
 }
 
 

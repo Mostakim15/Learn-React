@@ -22,7 +22,9 @@ function AllPosts() {
   const filteredPosts = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     if (!normalized) return posts;
-    return posts.filter((post) => `${post.title} ${post.content}`.toLowerCase().includes(normalized));
+    return posts.filter((post) =>
+      `${post.title || ""} ${post.content || ""}`.toLowerCase().includes(normalized)
+    );
   }, [posts, query]);
 
   return (

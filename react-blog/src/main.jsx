@@ -18,6 +18,8 @@ import Post from "./pages/Post";
 import AllPosts from "./pages/AllPosts";
 import Help from "./pages/Help";
 import Profile from "./pages/Profile";
+import Reels from "./pages/Reels";
+import AddReel from "./pages/AddReel";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,18 @@ const router = createBrowserRouter([
         {
             path: "/",
             element: <Home />,
+        },
+        {
+            path: "/reels",
+            element: <Reels />,
+        },
+        {
+            path: "/add-reel",
+            element: (
+                <AuthLayout authentication>
+                    <AddReel />
+                </AuthLayout>
+            ),
         },
         {
             path: "/login",

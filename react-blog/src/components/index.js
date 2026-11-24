@@ -15,6 +15,7 @@ import Input from "./Input";
 import Chatbot from "./Chatbot";
 import LikeDislike from "./LikeDislike";
 import Comments from "./Comments";
+import ReelCard from "./ReelCard";
 export { 
     Header,
     Footer,
@@ -33,4 +34,5 @@ export {
     Chatbot,
     LikeDislike,
     Comments,
+    ReelCard,
 };

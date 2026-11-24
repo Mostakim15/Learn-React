@@ -27,11 +27,8 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-[#e9e2d7] bg-[#f8f6f1]/95 backdrop-blur">
       <Container>
         <nav className="flex min-h-[76px] items-center justify-between gap-6" aria-label="Main navigation">
-          <Link to="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-            <Logo width="48px" />
-            <span className="hidden editorial-serif text-xl font-bold tracking-tight text-[#172b3a] sm:block">
-              The Letterform
-            </span>
+          <Link to="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
+            <Logo />
           </Link>
 
           <button
@@ -53,6 +50,14 @@ function Header() {
               className={`rounded-full px-4 py-2 text-sm font-semibold transition hover:text-[#b77945] ${location.pathname === "/" ? "text-[#b77945]" : "text-[#686b70]"}`}
             >
               Home
+            </Link>
+            <Link
+              to="/reels"
+              onClick={() => setMenuOpen(false)}
+              className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition hover:text-[#b77945] ${location.pathname.startsWith("/reels") ? "text-[#b77945]" : "text-[#686b70]"}`}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#b77945]" />
+              EduReels
             </Link>
             {navItems.map((item) => (
               <button
