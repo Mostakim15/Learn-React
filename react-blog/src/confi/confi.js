@@ -4,6 +4,7 @@ const confi = {
   appwriteDatabaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
   appwriteCollectionId: import.meta.env.VITE_APPWRITE_COLLECTION_ID,
   appwriteBucketId: import.meta.env.VITE_APPWRITE_BUCKET_ID,
+  appwriteCommentsCollectionId: import.meta.env.VITE_APPWRITE_COMMENTS_COLLECTION_ID,
 };
 
 export default confi;

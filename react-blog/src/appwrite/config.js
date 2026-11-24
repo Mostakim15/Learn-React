@@ -136,6 +136,76 @@ export class Service{
             fileId
         )
     }
+
+    // --- LIKES & DISLIKES SERVICE ---
+
+    async updateLikes(slug, { likes, dislikes }) {
+        try {
+            return await this.databases.updateDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteCollectionId,
+                slug,
+                {
+                    likes,
+                    dislikes,
+                }
+            );
+        } catch (error) {
+            console.log("Appwrite service :: updateLikes :: error", error);
+            return false;
+        }
+    }
+
+    // --- COMMENTS / FEEDBACK SERVICE ---
+
+    async createComment({ postId, userId, userName, content }) {
+        try {
+            return await this.databases.createDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteCommentsCollectionId,
+                ID.unique(),
+                {
+                    postId,
+                    userId,
+                    userName,
+                    content,
+                }
+            );
+        } catch (error) {
+            console.log("Appwrite service :: createComment :: error", error);
+            throw error;
+        }
+    }
+
+    async getComments(postId) {
+        try {
+            return await this.databases.listDocuments(
+                confi.appwriteDatabaseId,
+                confi.appwriteCommentsCollectionId,
+                [
+                    Query.equal("postId", postId),
+                    Query.orderDesc("$createdAt"),
+                ]
+            );
+        } catch (error) {
+            console.log("Appwrite service :: getComments :: error", error);
+            return { documents: [] };
+        }
+    }
+
+    async deleteComment(commentId) {
+        try {
+            await this.databases.deleteDocument(
+                confi.appwriteDatabaseId,
+                confi.appwriteCommentsCollectionId,
+                commentId
+            );
+            return true;
+        } catch (error) {
+            console.log("Appwrite service :: deleteComment :: error", error);
+            return false;
+        }
+    }
 }
 
 

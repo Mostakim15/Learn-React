@@ -7,7 +7,7 @@ function getExcerpt(content = "") {
   return plainText.length > 120 ? `${plainText.slice(0, 120)}…` : plainText;
 }
 
-function PostCard({ $id, title, blogImage, content, featured = false }) {
+function PostCard({ $id, title, blogImage, content, likes = [], featured = false }) {
   return (
     <Link to={`/post/${$id}`} className={`group block ${featured ? "md:col-span-2" : ""}`}>
       <article className="motion-safe h-full overflow-hidden rounded-2xl border border-[#e9e2d7] bg-white shadow-[0_10px_35px_rgba(23,43,58,0.04)]">
@@ -32,7 +32,14 @@ function PostCard({ $id, title, blogImage, content, featured = false }) {
           </h2>
           {content && <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#686b70]">{getExcerpt(content)}</p>}
           <div className="mt-5 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-[#9a9b9d]">
-            <span>Read story</span>
+            <div className="flex items-center gap-2">
+              <span>Read story</span>
+              {Array.isArray(likes) && likes.length > 0 && (
+                <span className="flex items-center gap-1 font-bold text-[#b77945]">
+                  • {likes.length} {likes.length === 1 ? "like" : "likes"}
+                </span>
+              )}
+            </div>
             <span className="text-[#b77945] transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
           </div>
         </div>

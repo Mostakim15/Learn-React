@@ -13,6 +13,8 @@ import AuthLayout from "./AuthLayout";
 import Button from "./Button";
 import Input from "./Input";
 import Chatbot from "./Chatbot";
+import LikeDislike from "./LikeDislike";
+import Comments from "./Comments";
 export { 
     Header,
     Footer,
@@ -29,4 +31,6 @@ export {
     Button,
     Input,
     Chatbot,
+    LikeDislike,
+    Comments,
 };
